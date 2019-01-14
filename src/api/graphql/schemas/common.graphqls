@@ -1,0 +1,12 @@
+enum ItemTypeEnum {
+	DEFAULT
+	LARGE
+	FRAGILE
+}
+
+enum OrderStatusEnum {
+	CREATED
+	PENDING
+	COMPLETED
+	CANCELED
+}

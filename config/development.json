@@ -1,0 +1,13 @@
+{
+  "app": {
+    "port": 3000,
+    "name": "Delivery service API"
+  },
+  "db": {
+    "uri": "mongodb://localhost:27017/delivery_service"
+  },
+  "logging": {
+    "enabled": true,
+    "level": "debug"
+  }
+}

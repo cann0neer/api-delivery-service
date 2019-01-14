@@ -1,0 +1,71 @@
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+type Query {
+	items(input: ItemsInput): ItemsResponse
+}
+
+type Mutation {
+	signup(input: SignupInput): SignupResponse
+	request(input: RequestInput): RequestResponse # makeOrder
+}
+
+# items types
+
+input ItemsInput {
+	geo: String
+}
+
+type Item {
+	id: String
+	type: ItemTypeEnum
+	name: String
+	description: String
+}
+
+type ItemsResponse {
+	items: [ Item ]
+	id: String
+}
+
+# signup types
+
+input SignupInput {
+	name: String!
+	description: String
+}
+
+type SignupResponse {
+	success: Boolean
+	clientId: String
+}
+
+# mutation ruquest types
+
+input RequestInput {
+	clientId: String!
+	itemIds: [ String ]!
+	geo: String!
+}
+
+type DeliveryService {
+	id: String
+	name: String
+	description: String
+}
+
+type Order {
+	id: String
+	itemIds: [ String ]
+	deliveryServiceId: String
+	geo: String
+	status: OrderStatusEnum
+}
+
+type RequestResponse {
+	success: Boolean
+	order: Order
+	deliveryService: DeliveryService
+}

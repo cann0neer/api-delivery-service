@@ -1,0 +1,51 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    test: Boolean # appolo requires at least 1 query
+}
+
+type Mutation {
+    signup(input: SignupInput): SignupResponse
+    updateGeos(input: UpdateGeosInput): UpdateGeosResponse
+    updateItemTypes(input: UpdateItemTypesInput): UpdateItemTypesResponse
+}
+
+# mutation updateItemTypes type
+
+input UpdateItemTypesInput {
+    deliveryServiceId: String!
+    itemTypes: [ ItemTypeEnum ]!
+}
+
+type UpdateItemTypesResponse {
+    success: Boolean
+}
+
+# mutation updateGeos types
+
+input UpdateGeosInput {
+    deliveryServiceId: String!
+    geos: [ String ]!
+}
+
+type UpdateGeosResponse {
+    success: Boolean
+}
+
+# mutation signup types
+
+input SignupInput {
+    name: String!
+    description: String
+    geos: [ String ]
+    itemTypes: [ ItemTypeEnum ]
+}
+
+type SignupResponse {
+    success: Boolean
+    deliveryServiceId: String
+}
+
